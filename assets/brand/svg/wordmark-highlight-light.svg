@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 200" width="1600" height="400">
+  
+  <text x="40" y="155" class="t" fill="#0C1410">Financ</text>
+  <rect x="465" y="35" width="180" height="140" rx="14" fill="#00E664"></rect>
+  <text x="478" y="155" class="t" fill="#0C1410">IA</text>
+</svg>
