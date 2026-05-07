@@ -1,0 +1,28 @@
+{
+  "name": "financia-design-system",
+  "version": "0.1.0",
+  "description": "Design system de FinancIA — fuente de verdad y extractor que produce tokens.json, presets.json y templates/ para que el equipo de backend rendere y publique posts en Instagram.",
+  "type": "module",
+  "private": true,
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "extract": "node src/index.js",
+    "extract:tokens": "node src/extractTokens.js",
+    "extract:presets": "node src/extractPresets.js",
+    "extract:json": "node src/buildPresetsJson.js",
+    "validate": "npm run extract && node --test 'test/**/*.test.js'",
+    "test": "node --test 'test/**/*.test.js'"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0",
+    "postcss": "^8.4.49",
+    "postcss-value-parser": "^4.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mtlx14/financia.git"
+  },
+  "license": "UNLICENSED"
+}

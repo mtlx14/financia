@@ -9,14 +9,15 @@
 
 ## Objetivo del proyecto
 
-Construir un sistema en Node.js que:
-1. Lee `manual-marca.html` (la fuente de verdad del design system).
-2. Extrae tokens y presets a JSON.
-3. Renderiza posts de Instagram con Puppeteer a partir de templates HTML.
-4. Sube las imágenes a Cloudinary.
-5. Publica en Instagram vía Graph API (cuenta Business/Creator).
+Mantener el **design system de FinancIA** y entregárselo al equipo de backend en un formato consumible. El proyecto cubre:
 
-**Estado actual:** Fase 1 (preparar el HTML) en curso. Fases 2–5 (código) pendientes.
+1. `manual-marca.html` como fuente única de verdad (tokens, packs, presets).
+2. Un extractor (Fase 2) que produce `tokens.json`, `presets.json` y `templates/post-*.html` separados.
+3. Documentación del contrato JSON (`docs/CONTENT-CONTRACT.md`) que el back debe cumplir.
+
+**Lo que NO hacemos acá:** render con Puppeteer, upload a Cloudinary, publicación con Graph API. Eso lo arma el equipo de backend a partir de los artefactos que entregamos.
+
+**Estado actual:** Fase 1 cerrada (design system + tema único forest + 13 presets + kit de marca). Fase 2 (extractor + handoff) pendiente.
 
 Ver `PLAN.md` para el tracker detallado y `docs/DESIGN-SYSTEM.md` para la doc del sistema.
 
@@ -131,16 +132,17 @@ Para crear un preset nuevo:
 
 ---
 
-## Stack técnico planeado
+## Stack técnico
 
+**Lado nuestro (Fase 2 · extractor):**
 - **Node.js** moderno, ESM
-- **Puppeteer** para render HTML → PNG (deviceScaleFactor 2)
 - **PostCSS** para parsear las CSS vars con confianza
-- **Cloudinary** como CDN público (gratis hasta 25GB, exigido por Graph API)
-- **axios** para Graph API
-- **dotenv** para credenciales
+- Sin Puppeteer / Cloudinary / Graph API: no son necesarios acá.
 
-Setup detallado en `docs/CLOUDINARY-SETUP.md` y `docs/INSTAGRAM-SETUP.md`.
+**Lado del back (informativo, ellos eligen su stack):**
+- Puppeteer (o equivalente) para render HTML → PNG (deviceScaleFactor 2)
+- Cloudinary como CDN sugerido (ver `docs/CLOUDINARY-SETUP.md`)
+- Graph API para publicación (ver `docs/INSTAGRAM-SETUP.md`)
 
 ---
 
@@ -166,16 +168,21 @@ Setup detallado en `docs/CLOUDINARY-SETUP.md` y `docs/INSTAGRAM-SETUP.md`.
 | `assets/brand/` | Kit de marca FinancIA (svg, png-marks, avatars-instagram) |
 | `docs/BRAND-KIT.md` | Inventario y reglas del kit de marca |
 | `docs/DESIGN-SYSTEM.md` | Doc canónica de tokens, capas, presets, slots |
-| `docs/CLOUDINARY-SETUP.md` | Setup del CDN |
-| `docs/INSTAGRAM-SETUP.md` | Setup de Graph API |
+| `docs/CLOUDINARY-SETUP.md` | Setup del CDN (referencia para el back) |
+| `docs/INSTAGRAM-SETUP.md` | Setup de Graph API (referencia para el back) |
+| `docs/CONTENT-CONTRACT.md` | *(pendiente · Fase 2)* contrato JSON que el back debe cumplir |
+| `tokens.json`, `presets.json`, `templates/` | *(pendiente · Fase 2)* artefactos generados por el extractor |
 
 ---
 
 ## Próximos pasos (cuando se retome)
 
-1. Continuar afinando estilos de `manual-marca.html` según feedback visual del usuario.
-2. Agregar demos funcionales menores cuando los pida (carrusel auto-rotando, stories animadas, etc.).
-3. ~~Cerrar Fase 1~~ ✓ Cerrada (tema único, variables renombradas).
-4. Empezar Fase 2: `src/tokenExtractor.js`.
+1. ~~Cerrar Fase 1~~ ✓ Cerrada (tema único forest, variables `--brand-*`, 13 presets, kit integrado).
+2. Empezar Fase 2:
+   - `src/tokenExtractor.js` → `tokens.json`
+   - Splitter de presets → `templates/post-*.html` con `data-slot="…"`
+   - `presets.json` (schema machine-readable)
+   - `docs/CONTENT-CONTRACT.md` (contrato para el back)
+3. Tag `v1.0.0` cuando Fase 2 cierre, y handoff al back.
 
 **No empezar con código sin confirmación explícita del usuario.**

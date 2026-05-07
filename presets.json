@@ -1,0 +1,629 @@
+{
+  "_meta": {
+    "generatedAt": "2026-05-06T21:48:13.056Z",
+    "source": "templates/post-*.html (data-slot attributes)",
+    "format": "1080x1080",
+    "count": 13
+  },
+  "post-announcement": {
+    "format": "1080x1080",
+    "variants": {
+      "theme": {
+        "values": [
+          "ink",
+          "brand"
+        ],
+        "default": "ink"
+      },
+      "layout": {
+        "values": [
+          "left",
+          "center"
+        ],
+        "default": "left"
+      }
+    },
+    "slots": {
+      "tag": {
+        "type": "string",
+        "required": true,
+        "example": "NUEVO"
+      },
+      "title_pre": {
+        "type": "string",
+        "required": true,
+        "example": "Curso gratis:"
+      },
+      "title_em_1": {
+        "type": "string",
+        "required": true,
+        "example": "finanzas"
+      },
+      "title_em_2": {
+        "type": "string",
+        "required": true,
+        "example": "desde cero."
+      },
+      "cta": {
+        "type": "string",
+        "required": true,
+        "example": "REGÍSTRATE EN BIO →"
+      }
+    }
+  },
+  "post-carousel": {
+    "format": "1080x1080",
+    "variants": {
+      "theme": {
+        "values": [
+          "ink",
+          "brand"
+        ],
+        "default": "ink"
+      },
+      "layout": {
+        "values": [
+          "headline-block",
+          "headline-stack"
+        ],
+        "default": "headline-block"
+      }
+    },
+    "slots": {
+      "num": {
+        "type": "string",
+        "required": true,
+        "example": "// 001"
+      },
+      "swipe": {
+        "type": "string",
+        "required": true,
+        "example": "desliza →"
+      },
+      "headline_pre": {
+        "type": "string",
+        "required": true,
+        "example": "Cómo invertir"
+      },
+      "headline_highlight": {
+        "type": "string",
+        "required": true,
+        "example": "$100"
+      },
+      "headline_post": {
+        "type": "string",
+        "required": true,
+        "example": "al mes."
+      },
+      "dots": {
+        "type": "string",
+        "required": true,
+        "example": ""
+      }
+    }
+  },
+  "post-checklist": {
+    "format": "1080x1080",
+    "variants": {
+      "theme": {
+        "values": [
+          "cream",
+          "ink"
+        ],
+        "default": "cream"
+      },
+      "layout": {
+        "values": [
+          "default",
+          "dense"
+        ],
+        "default": "default"
+      }
+    },
+    "slots": {
+      "tag": {
+        "type": "string",
+        "required": true,
+        "example": "// ANTES DE INVERTIR"
+      },
+      "title": {
+        "type": "string",
+        "required": true,
+        "example": "¿Estás listo?"
+      },
+      "item_1": {
+        "type": "string",
+        "required": true,
+        "example": "Sin deudas con interés >15%"
+      },
+      "item_2": {
+        "type": "string",
+        "required": true,
+        "example": "Fondo de emergencia listo"
+      },
+      "item_3": {
+        "type": "string",
+        "required": true,
+        "example": "Ingreso estable mensual"
+      },
+      "item_4": {
+        "type": "string",
+        "required": true,
+        "example": "Objetivos a 5+ años definidos"
+      },
+      "item_5": {
+        "type": "string",
+        "required": true,
+        "example": "Conoces tu tolerancia al riesgo"
+      },
+      "foot_label": {
+        "type": "string",
+        "required": true,
+        "example": "CHECKLIST · 03"
+      }
+    }
+  },
+  "post-compare": {
+    "format": "1080x1080",
+    "variants": {
+      "theme": {
+        "values": [
+          "cream",
+          "ink"
+        ],
+        "default": "cream"
+      },
+      "layout": {
+        "values": [
+          "side-by-side",
+          "stacked"
+        ],
+        "default": "side-by-side"
+      }
+    },
+    "slots": {
+      "header": {
+        "type": "string",
+        "required": true,
+        "example": "Ahorrar $5,000/mes durante 30 años"
+      },
+      "bad_label": {
+        "type": "string",
+        "required": true,
+        "example": "En la cuenta"
+      },
+      "bad_amount": {
+        "type": "string",
+        "required": true,
+        "example": "$1.8M"
+      },
+      "bad_desc": {
+        "type": "string",
+        "required": true,
+        "example": "Sin invertir, dinero quieto pierde ante la inflación."
+      },
+      "vs": {
+        "type": "string",
+        "required": true,
+        "example": "vs"
+      },
+      "good_label": {
+        "type": "string",
+        "required": true,
+        "example": "Invertido al 8%"
+      },
+      "good_amount": {
+        "type": "string",
+        "required": true,
+        "example": "$7.4M"
+      },
+      "good_desc": {
+        "type": "string",
+        "required": true,
+        "example": "Con interés compuesto el dinero trabaja por ti."
+      },
+      "foot_tag": {
+        "type": "string",
+        "required": true,
+        "example": "· educa · invierte"
+      }
+    }
+  },
+  "post-data": {
+    "format": "1080x1080",
+    "variants": {
+      "theme": {
+        "values": [
+          "bone",
+          "ink",
+          "cream"
+        ],
+        "default": "bone"
+      },
+      "layout": {
+        "values": [
+          "num-top",
+          "num-center"
+        ],
+        "default": "num-top"
+      }
+    },
+    "slots": {
+      "tag": {
+        "type": "string",
+        "required": true,
+        "example": "// DATO INCÓMODO"
+      },
+      "num": {
+        "type": "string",
+        "required": true,
+        "example": "73"
+      },
+      "num_unit": {
+        "type": "string",
+        "required": true,
+        "example": "%"
+      },
+      "context": {
+        "type": "string",
+        "required": true,
+        "example": "de los adultos no podrían cubrir un gasto inesperado de $500 sin endeudarse."
+      },
+      "source": {
+        "type": "string",
+        "required": true,
+        "example": "FUENTE · ESTUDIO 2025"
+      }
+    }
+  },
+  "post-edu": {
+    "format": "1080x1080",
+    "variants": {
+      "theme": {
+        "values": [
+          "cream",
+          "ink",
+          "brand"
+        ],
+        "default": "cream"
+      },
+      "layout": {
+        "values": [
+          "icon-top",
+          "icon-side"
+        ],
+        "default": "icon-top"
+      }
+    },
+    "slots": {
+      "icon_svg": {
+        "type": "html",
+        "required": true,
+        "example": "<path d=\"M3 17l6-6 4 4 8-8M21 7h-5M21 7v5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>"
+      },
+      "title": {
+        "type": "string",
+        "required": true,
+        "example": "¿Qué es el interés compuesto?"
+      },
+      "body": {
+        "type": "string",
+        "required": true,
+        "example": "Es cuando los intereses generan más intereses. El dinero crece sobre lo que ya creció."
+      },
+      "foot_label": {
+        "type": "string",
+        "required": true,
+        "example": "CONCEPTO · 01"
+      }
+    }
+  },
+  "post-grid-dark": {
+    "format": "1080x1080",
+    "variants": {
+      "theme": {
+        "values": [
+          "ink"
+        ],
+        "default": "ink"
+      },
+      "layout": {
+        "values": [
+          "left",
+          "center"
+        ],
+        "default": "left"
+      }
+    },
+    "slots": {
+      "tag": {
+        "type": "string",
+        "required": true,
+        "example": "DATO 2026"
+      },
+      "stat_pre": {
+        "type": "string",
+        "required": true,
+        "example": "$"
+      },
+      "stat_highlight": {
+        "type": "string",
+        "required": true,
+        "example": "427K"
+      },
+      "context": {
+        "type": "string",
+        "required": true,
+        "example": "es lo que pierdes en 30 años por no invertir $200 al mes."
+      },
+      "source": {
+        "type": "string",
+        "required": true,
+        "example": "FUENTE · CÁLCULO 8% ANUAL"
+      }
+    }
+  },
+  "post-grid-headline": {
+    "format": "1080x1080",
+    "variants": {
+      "theme": {
+        "values": [
+          "cream",
+          "ink"
+        ],
+        "default": "cream"
+      },
+      "layout": {
+        "values": [
+          "left",
+          "center"
+        ],
+        "default": "left"
+      }
+    },
+    "slots": {
+      "tag": {
+        "type": "string",
+        "required": true,
+        "example": "// EDUCACIÓN FINANCIERA"
+      },
+      "headline_pre": {
+        "type": "string",
+        "required": true,
+        "example": "Deja de"
+      },
+      "headline_em": {
+        "type": "string",
+        "required": true,
+        "example": "vivir"
+      },
+      "headline_post": {
+        "type": "string",
+        "required": true,
+        "example": "al día."
+      },
+      "post_num": {
+        "type": "string",
+        "required": true,
+        "example": "POST 042"
+      }
+    }
+  },
+  "post-list": {
+    "format": "1080x1080",
+    "variants": {
+      "theme": {
+        "values": [
+          "bone",
+          "cream",
+          "ink"
+        ],
+        "default": "bone"
+      },
+      "layout": {
+        "values": [
+          "numbered",
+          "bullet"
+        ],
+        "default": "numbered"
+      }
+    },
+    "slots": {
+      "tag": {
+        "type": "string",
+        "required": true,
+        "example": "// EN 5 PASOS"
+      },
+      "title": {
+        "type": "string",
+        "required": true,
+        "example": "Empieza tu fondo de emergencia hoy."
+      },
+      "item_1": {
+        "type": "string",
+        "required": true,
+        "example": "Calcula 3 meses de gastos esenciales."
+      },
+      "item_2": {
+        "type": "string",
+        "required": true,
+        "example": "Abre una cuenta separada solo para esto."
+      },
+      "item_3": {
+        "type": "string",
+        "required": true,
+        "example": "Automatiza un depósito mensual fijo."
+      },
+      "item_4": {
+        "type": "string",
+        "required": true,
+        "example": "Invierte en algo líquido (CETES, fondos)."
+      },
+      "item_5": {
+        "type": "string",
+        "required": true,
+        "example": "No tocarlo. Para nada que no sea emergencia."
+      },
+      "foot_label": {
+        "type": "string",
+        "required": true,
+        "example": "GUÍA · 005"
+      }
+    }
+  },
+  "post-outro": {
+    "format": "1080x1080",
+    "variants": {
+      "theme": {
+        "values": [
+          "ink",
+          "brand",
+          "cream"
+        ],
+        "default": "ink"
+      },
+      "layout": {
+        "values": [
+          "stacked",
+          "split"
+        ],
+        "default": "stacked"
+      }
+    },
+    "slots": {
+      "meta_left": {
+        "type": "string",
+        "required": true,
+        "example": "// FIN"
+      },
+      "meta_right": {
+        "type": "string",
+        "required": true,
+        "example": "2026"
+      },
+      "tagline": {
+        "type": "string",
+        "required": true,
+        "example": "Educación financiera · Chile"
+      },
+      "cta": {
+        "type": "string",
+        "required": true,
+        "example": "Sígueme →"
+      }
+    }
+  },
+  "post-question": {
+    "format": "1080x1080",
+    "variants": {
+      "theme": {
+        "values": [
+          "brand-pale",
+          "ink"
+        ],
+        "default": "brand-pale"
+      },
+      "layout": {
+        "values": [
+          "symbol-top",
+          "symbol-center"
+        ],
+        "default": "symbol-top"
+      }
+    },
+    "slots": {
+      "symbol": {
+        "type": "string",
+        "required": true,
+        "example": "?"
+      },
+      "question": {
+        "type": "string",
+        "required": true,
+        "example": "¿Cuánto necesitas ahorrar para retirarte sin trabajar?"
+      },
+      "cta": {
+        "type": "string",
+        "required": true,
+        "example": "// RESPONDE EN COMENTARIOS"
+      }
+    }
+  },
+  "post-quote": {
+    "format": "1080x1080",
+    "variants": {
+      "theme": {
+        "values": [
+          "brand"
+        ],
+        "default": "brand"
+      },
+      "layout": {
+        "values": [
+          "mark-top",
+          "mark-side"
+        ],
+        "default": "mark-top"
+      }
+    },
+    "slots": {
+      "mark": {
+        "type": "string",
+        "required": true,
+        "example": "\""
+      },
+      "text": {
+        "type": "string",
+        "required": true,
+        "example": "No ahorres lo que te queda después de gastar. Gasta lo que te queda después de ahorrar."
+      },
+      "author": {
+        "type": "string",
+        "required": true,
+        "example": "— WARREN BUFFETT"
+      }
+    }
+  },
+  "post-tip": {
+    "format": "1080x1080",
+    "variants": {
+      "theme": {
+        "values": [
+          "brand",
+          "ink",
+          "cream"
+        ],
+        "default": "brand"
+      },
+      "layout": {
+        "values": [
+          "left",
+          "center"
+        ],
+        "default": "left"
+      }
+    },
+    "slots": {
+      "tag": {
+        "type": "string",
+        "required": true,
+        "example": "TIP DEL DÍA"
+      },
+      "headline": {
+        "type": "string",
+        "required": true,
+        "example": "Ahorra el 20%"
+      },
+      "headline_em": {
+        "type": "string",
+        "required": true,
+        "example": "antes de gastarlo."
+      },
+      "pagination": {
+        "type": "string",
+        "required": true,
+        "example": "01 / 01"
+      }
+    }
+  }
+}

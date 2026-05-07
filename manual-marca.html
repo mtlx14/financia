@@ -26,14 +26,14 @@
   --font-mono:    'JetBrains Mono', monospace;
 
   /* — Tipografía: tamaños — */
-  --text-xxs:      9px;
-  --text-xs:      10px;
-  --text-sm:      11px;
-  --text-md:      14px;
-  --text-base:    18px;
-  --text-lg:      28px;
-  --text-xl:      44px;
-  --text-display: clamp(60px, 12vw, 180px);
+  --text-xxs:     24px;
+  --text-xs:      28px;
+  --text-sm:      30px;
+  --text-md:      38px;
+  --text-base:    48px;
+  --text-lg:      76px;
+  --text-xl:     120px;
+  --text-display: 200px;
 
   /* — Tipografía: pesos — */
   --weight-light:   300;
@@ -68,21 +68,21 @@
   --radius-full:  50%;
 
   /* — Espaciado (escala base 4px) — */
-  --space-0:    0;
-  --space-1:    4px;
-  --space-2:    8px;
-  --space-3:   12px;
-  --space-4:   16px;
-  --space-5:   20px;
-  --space-6:   24px;
-  --space-7:   28px;
-  --space-8:   32px;
-  --space-9:   36px;
-  --space-10:  40px;
-  --space-12:  48px;
-  --space-15:  60px;
-  --space-20:  80px;
-  --space-25: 100px;
+  --space-0:     0;
+  --space-1:    12px;
+  --space-2:    24px;
+  --space-3:    32px;
+  --space-4:    44px;
+  --space-5:    56px;
+  --space-6:    64px;
+  --space-7:    76px;
+  --space-8:    88px;
+  --space-9:    96px;
+  --space-10:  108px;
+  --space-12:  132px;
+  --space-15:  164px;
+  --space-20:  220px;
+  --space-25:  272px;
 
   /* — Sombras — */
   --shadow-sm:   0 8px 32px rgba(0,0,0,0.18), 0 0 0 1px rgba(0,0,0,0.04);
@@ -102,11 +102,11 @@
   --pixelmark-opacity-full: 1;
 
   /* Escala de tamaños del pixelmark · usar el token, no px crudos */
-  --pixelmark-xs:   20px;   /* esquinas de posts, badges chicos */
-  --pixelmark-sm:   28px;   /* nav, headers compactos */
-  --pixelmark-md:   48px;   /* default del pack, uso general */
-  --pixelmark-lg:   96px;   /* hero, splash */
-  --pixelmark-xl:  140px;   /* sección logo, presentaciones */
+  --pixelmark-xs:   56px;   /* esquinas de posts, badges chicos */
+  --pixelmark-sm:   76px;   /* nav, headers compactos */
+  --pixelmark-md:  128px;   /* default del pack, uso general */
+  --pixelmark-lg:  256px;   /* hero, splash */
+  --pixelmark-xl:  380px;   /* sección logo, presentaciones */
 
   /* ════════════════════════════════════
      CAPA 2 · SEMÁNTICOS
@@ -148,8 +148,8 @@
   --text-on-brand:  var(--on-brand);
 
   /* — Espaciado con rol — */
-  --space-card-pad-y:  var(--space-9);   /* 36px - padding vertical de cards */
-  --space-card-pad-x:  var(--space-8);   /* 32px - padding horizontal */
+  --space-card-pad-y:  var(--space-9);   /* 96px - padding vertical de cards */
+  --space-card-pad-x:  var(--space-8);   /* 88px - padding horizontal */
   --space-section:     var(--space-20);  /* 80px - separación entre secciones */
   --space-stack-sm:    var(--space-2);   /*  8px - gap pequeño */
   --space-stack-md:    var(--space-4);   /* 16px - gap medio */
@@ -180,6 +180,46 @@
 /* ============================================================
    DESIGN TOKENS:END
    ============================================================ */
+
+/* ============================================================
+   MANUAL CHROME · overrides locales (NO se exporta)
+   El :root de arriba es 1080-native (lo que necesitan los templates).
+   Para que la página del manual no salga gigante, sobreescribimos a
+   valores "chrome-small" sólo dentro de body. Los .ig-post recuperan
+   los valores 1080-native con un re-override más abajo.
+   ============================================================ */
+body {
+  --text-xxs:     12px;
+  --text-xs:      13px;
+  --text-sm:      15px;
+  --text-md:      17px;
+  --text-base:    19px;
+  --text-lg:      30px;
+  --text-xl:      48px;
+  --text-display: clamp(64px, 12vw, 200px);
+
+  --space-1:    4px;
+  --space-2:    8px;
+  --space-3:   12px;
+  --space-4:   16px;
+  --space-5:   20px;
+  --space-6:   24px;
+  --space-7:   28px;
+  --space-8:   32px;
+  --space-9:   36px;
+  --space-10:  40px;
+  --space-12:  48px;
+  --space-15:  60px;
+  --space-20:  80px;
+  --space-25: 100px;
+
+  --pixelmark-xs:   20px;
+  --pixelmark-sm:   28px;
+  --pixelmark-md:   48px;
+  --pixelmark-lg:   96px;
+  --pixelmark-xl:  140px;
+}
+
 
 
 /* ============================================================
@@ -414,7 +454,7 @@
   align-items: center;
   gap: var(--space-6);
 }
-.posts-live .post-frame { width: 380px; }
+/* posts-live ya hereda --showcase-frame · ver bloque "Manual showcase scale" */
 .stories-live .story-frame { width: 240px; }
 
 .live-tag {
@@ -506,6 +546,22 @@
   font-weight: var(--weight-medium);
 }
 .arch-section-title:first-of-type { margin-top: 0; }
+
+.arch-section-lead {
+  font-size: var(--text-md);
+  color: var(--graphite);
+  line-height: 1.5;
+  max-width: 720px;
+  margin-bottom: var(--space-6);
+}
+.arch-section-lead code {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  background: var(--bone);
+  padding: 0.1em 0.4em;
+  border-radius: var(--radius-sm);
+  color: var(--ink);
+}
 
 .arch-stack {
   display: grid;
@@ -688,13 +744,65 @@
   color: var(--on-brand);
 }
 
-/* Pipeline */
+/* Pipeline · 2 bloques con handoff en el medio */
+.arch-pipeline-wrap {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+}
+.arch-pipeline-block {
+  display: grid;
+  gap: var(--space-2);
+}
+.arch-pipeline-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--track-widest);
+  color: var(--graphite);
+  margin-bottom: var(--space-2);
+}
+.arch-pipeline-label strong { color: var(--ink); font-weight: var(--weight-bold); }
+.arch-pipeline-label .arch-pipeline-tag {
+  font-size: var(--text-xxs);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-pill);
+  letter-spacing: var(--track-wider);
+}
+.arch-pipeline-label .arch-pipeline-tag.is-ours { background: var(--brand); color: var(--ink); }
+.arch-pipeline-label .arch-pipeline-tag.is-back { background: var(--ink);   color: var(--white); }
+
 .arch-pipeline {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
   gap: var(--space-2);
   align-items: stretch;
 }
+.arch-pipeline.is-ours { grid-template-columns: repeat(3, 1fr); }
+.arch-pipeline.is-back { grid-template-columns: repeat(4, 1fr); }
+
+.arch-handoff {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  padding: var(--space-3) 0;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  letter-spacing: var(--track-wider);
+  color: var(--graphite);
+}
+.arch-handoff::before,
+.arch-handoff::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--mist);
+}
+.arch-handoff strong { color: var(--ink); font-weight: var(--weight-bold); }
+
 .arch-stage {
   background: var(--bone);
   border: 1px solid var(--mist);
@@ -724,9 +832,33 @@
   margin-top: auto;
   line-height: 1.3;
 }
-.arch-stage-arrow {
-  display: none; /* el grid se encarga del espaciado, las flechas son decorativas */
+.arch-stage-desc code,
+.arch-stage-name code {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  background: rgba(0,0,0,0.06);
+  padding: 0.05em 0.35em;
+  border-radius: var(--radius-sm);
 }
+.arch-pipeline.is-back .arch-stage-desc code {
+  background: rgba(255,255,255,0.1);
+  color: var(--brand);
+}
+/* Variante "ours": 3 cards en blanco con borde brand */
+.arch-pipeline.is-ours .arch-stage {
+  background: var(--white);
+  border: 1px solid var(--brand);
+}
+/* Variante "back": fondo ink, texto blanco */
+.arch-pipeline.is-back .arch-stage {
+  background: var(--ink);
+  border-color: transparent;
+}
+.arch-pipeline.is-back .arch-stage-num   { color: var(--brand); }
+.arch-pipeline.is-back .arch-stage-name  { color: var(--white); }
+.arch-pipeline.is-back .arch-stage-desc  { color: var(--white); opacity: 0.6; }
+
+.arch-stage-arrow { display: none; }
 .arch-stage-brand {
   background: var(--brand);
   border-color: transparent;
@@ -736,7 +868,8 @@
 .arch-stage-brand .arch-stage-name { color: var(--on-brand); }
 
 @media (max-width: 900px) {
-  .arch-pipeline { grid-template-columns: repeat(2, 1fr); }
+  .arch-pipeline.is-ours { grid-template-columns: 1fr; }
+  .arch-pipeline.is-back { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 900px) {
   .arch-stack { grid-template-columns: 1fr; }
@@ -757,7 +890,7 @@
 .post-tip .post-tip-tag { background: var(--white); color: var(--ink); }
 .post-tip .post-tip-foot { opacity: 0.85; }
 
-.post-carousel-headline span { color: var(--white); }
+.post-carousel-headline .hl { color: var(--white); }
 .post-quote { color: var(--white); }
 .post-quote .post-quote-author { border-color: rgba(255,255,255,0.25); }
 
@@ -1212,10 +1345,50 @@ body {
   line-height: 1.5;
 }
 
+/* ============================================================
+   Manual showcase scale
+   Los .ig-post viven en 1080-native (1080×1080). En el manual los
+   renderizamos a tamaño real y los achicamos visualmente con transform.
+   El margin negativo "recupera" el espacio de layout que la transform deja.
+   Ajustar `--showcase-scale` cambia el tamaño en todo el manual.
+   ============================================================ */
+:root {
+  --showcase-size: 1080px;
+  /* demo grande arriba (posts-live · 1 post de muestra) */
+  --demo-scale:  0.42;
+  --demo-frame:  calc(var(--showcase-size) * var(--demo-scale));
+  /* grid principal (3 por fila) */
+  --grid-scale:  0.36;
+  --grid-frame:  calc(var(--showcase-size) * var(--grid-scale));
+}
+
 .posts-showcase {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 32px;
+}
+.posts-showcase .post-frame {
+  width: var(--grid-frame);
+}
+.posts-showcase .ig-post {
+  width:  var(--showcase-size);
+  height: var(--showcase-size);
+  flex-shrink: 0;
+  transform: scale(var(--grid-scale));
+  transform-origin: top left;
+  margin-right:  calc(var(--showcase-size) * (var(--grid-scale) - 1));
+  margin-bottom: calc(var(--showcase-size) * (var(--grid-scale) - 1));
+}
+
+.posts-live .post-frame { width: var(--demo-frame); }
+.posts-live .ig-post {
+  width:  var(--showcase-size);
+  height: var(--showcase-size);
+  flex-shrink: 0;
+  transform: scale(var(--demo-scale));
+  transform-origin: top left;
+  margin-right:  calc(var(--showcase-size) * (var(--demo-scale) - 1));
+  margin-bottom: calc(var(--showcase-size) * (var(--demo-scale) - 1));
 }
 
 .post-frame {
@@ -1243,41 +1416,41 @@ body {
   flex-direction: column;
 }
 
-/* POST 1: TIP RÁPIDO en lima */
+/* POST 1: TIP RÁPIDO en brand · valores 1080-native */
 .post-tip {
   background: var(--surface-brand);
-  padding: var(--space-card-pad-y) var(--space-card-pad-x);
+  padding: 100px 88px;                /* one-off · 1080-native */
   justify-content: space-between;
 }
 .post-tip-tag {
   font-family: var(--font-mono);
-  font-size: var(--text-sm);
+  font-size: 30px;                    /* one-off · 1080-native */
   text-transform: uppercase;
   letter-spacing: var(--track-wider);
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 22px;                          /* one-off · 1080-native */
   background: var(--ink);
   color: var(--brand);
-  padding: 8px 14px;
+  padding: 22px 38px;                 /* one-off · 1080-native */
   border-radius: var(--radius-pill);
   width: fit-content;
   line-height: 1;
-  box-shadow: 0 4px 12px -4px rgba(0,0,0,0.2);
+  box-shadow: 0 11px 32px -11px rgba(0,0,0,0.2);
 }
 .post-tip-tag::before {
   content: "";
-  width: 6px;
-  height: 6px;
+  width: 16px;                        /* one-off · 1080-native */
+  height: 16px;
   border-radius: var(--radius-full);
   background: var(--brand);
-  box-shadow: 0 0 8px rgba(var(--brand-rgb), 0.6);
+  box-shadow: 0 0 22px rgba(var(--brand-rgb), 0.6);
   flex-shrink: 0;
 }
 .post-tip-tag .tag-key,
 .post-tip-tag .tag-meta { font-weight: var(--weight-black); }
 .post-tip-headline {
-  font-size: var(--text-xl);
+  font-size: 120px;                   /* one-off · 1080-native */
   font-weight: var(--weight-black);
   line-height: 0.95;
   letter-spacing: var(--track-tighter);
@@ -1293,18 +1466,63 @@ body {
   justify-content: space-between;
   align-items: end;
   font-family: var(--font-mono);
-  font-size: var(--text-xs);
+  font-size: 28px;                    /* one-off · 1080-native */
   text-transform: uppercase;
   letter-spacing: var(--track-wider);
   color: var(--ink);
   opacity: 0.7;
 }
 
+/* ── post-tip · variantes ── */
+/* theme: brand (default · estilos base ya aplican)
+   theme: ink   — fondo oscuro, tag verde
+   theme: cream — fondo claro, tag oscuro */
+.post-tip.post-tip--theme-ink {
+  background: var(--ink);
+  color: var(--white);
+}
+.post-tip.post-tip--theme-ink .post-tip-tag {
+  background: var(--brand);
+  color: var(--ink);
+}
+.post-tip.post-tip--theme-ink .post-tip-tag::before {
+  background: var(--ink);
+  box-shadow: none;
+}
+.post-tip.post-tip--theme-ink .post-tip-headline { color: var(--white); }
+.post-tip.post-tip--theme-ink .post-tip-foot { color: var(--white); opacity: 0.5; }
+
+.post-tip.post-tip--theme-cream {
+  background: var(--cream);
+  color: var(--ink);
+}
+.post-tip.post-tip--theme-cream .post-tip-tag {
+  background: var(--ink);
+  color: var(--brand);
+}
+.post-tip.post-tip--theme-cream .post-tip-tag::before {
+  background: var(--brand);
+}
+.post-tip.post-tip--theme-cream .post-tip-headline { color: var(--ink); }
+.post-tip.post-tip--theme-cream .post-tip-foot { color: var(--ink); opacity: 0.6; }
+
+/* layout: left (default)
+   layout: center — todo centrado, foot full-width abajo */
+.post-tip.post-tip--layout-center {
+  align-items: center;
+  text-align: center;
+}
+.post-tip.post-tip--layout-center .post-tip-foot {
+  width: 100%;
+  text-align: left;
+}
+
 /* POST 2: CARRUSEL portada */
+/* POST 2: CARRUSEL portada · 1080-native */
 .post-carousel {
   background: var(--ink);
   color: var(--white);
-  padding: var(--space-card-pad-y) var(--space-card-pad-x);
+  padding: 100px 88px;                /* one-off · 1080-native */
   justify-content: space-between;
   position: relative;
 }
@@ -1315,7 +1533,7 @@ body {
   background-image:
     linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
-  background-size: 32px 32px;
+  background-size: 86px 86px;         /* one-off · 1080-native */
 }
 .post-carousel-top {
   position: relative;
@@ -1325,32 +1543,32 @@ body {
 }
 .post-carousel-num {
   font-family: var(--font-mono);
-  font-size: var(--text-sm);
+  font-size: 30px;                    /* one-off · 1080-native */
   letter-spacing: var(--track-wider);
   color: var(--brand);
 }
 .post-carousel-swipe {
   font-family: var(--font-mono);
-  font-size: var(--text-xs);
+  font-size: 28px;                    /* one-off · 1080-native */
   text-transform: uppercase;
   letter-spacing: var(--track-widest);
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 16px;                          /* one-off · 1080-native */
   opacity: 0.6;
 }
 .post-carousel-headline {
   position: relative;
-  font-size: 52px;       /* one-off */
+  font-size: 140px;                   /* one-off · 1080-native */
   font-weight: var(--weight-black);
   line-height: 0.9;
   letter-spacing: var(--track-tight);
 }
-.post-carousel-headline span {
+.post-carousel-headline .hl {
   background: var(--brand);
   color: var(--ink);
   padding: 0 0.1em;
-  border-radius: 4px;       /* one-off */
+  border-radius: 12px;                /* one-off · 1080-native */
 }
 .post-carousel-foot {
   position: relative;
@@ -1360,16 +1578,16 @@ body {
 }
 .post-carousel-handle {
   font-weight: var(--weight-bold);
-  font-size: var(--text-md);
-  letter-spacing: -0.01em;  /* one-off */
+  font-size: 38px;                    /* one-off · 1080-native */
+  letter-spacing: -0.01em;
 }
 .post-carousel-dots {
   display: flex;
-  gap: var(--space-1);
+  gap: 12px;                          /* one-off · 1080-native */
 }
 .post-carousel-dots span {
-  width: 6px;
-  height: 6px;
+  width: 16px;                        /* one-off · 1080-native */
+  height: 16px;
   border-radius: var(--radius-full);
   background: rgba(255,255,255,0.3);
 }
@@ -1397,7 +1615,7 @@ body {
   align-items: stretch;
 }
 .compare-side {
-  border-radius: 12px;     /* one-off */
+  border-radius: 32px;     /* one-off · 1080-native */
   padding: var(--space-5) var(--space-4);
   display: flex;
   flex-direction: column;
@@ -1414,7 +1632,7 @@ body {
   opacity: 0.6;
 }
 .compare-amount {
-  font-size: 36px;       /* one-off */
+  font-size: 96px;       /* one-off · 1080-native */
   font-weight: var(--weight-black);
   line-height: 1;
   letter-spacing: var(--track-tighter);
@@ -1431,8 +1649,8 @@ body {
   font-weight: var(--weight-bold);
   background: var(--brand);
   color: var(--ink);
-  width: 32px;
-  height: 32px;
+  width: 88px;             /* one-off · 1080-native */
+  height: 88px;            /* one-off · 1080-native */
   border-radius: var(--radius-full);
   display: flex;
   align-items: center;
@@ -1466,22 +1684,22 @@ body {
   color: var(--graphite);
 }
 .post-data-num {
-  font-size: 120px;      /* one-off */
+  font-size: 320px;      /* one-off · 1080-native */
   font-weight: var(--weight-black);
   letter-spacing: var(--track-tightest);
   line-height: 0.85;
   color: var(--ink);
 }
 .post-data-num sup {
-  font-size: 36px;       /* one-off */
+  font-size: 96px;       /* one-off · 1080-native */
   vertical-align: top;
   color: var(--brand-deep);
 }
 .post-data-context {
-  font-size: 16px;
+  font-size: 44px;       /* one-off · 1080-native */
   line-height: 1.4;
   color: var(--graphite);
-  max-width: 240px;
+  max-width: 640px;      /* one-off · 1080-native */
 }
 .post-data-foot {
   display: flex;
@@ -1508,8 +1726,8 @@ body {
   border: 1px solid var(--mist);
 }
 .post-edu-icon {
-  width: 64px;
-  height: 64px;
+  width: 176px;            /* one-off · 1080-native */
+  height: 176px;           /* one-off · 1080-native */
   border-radius: var(--radius-lg);
   background: var(--brand);
   display: flex;
@@ -1517,8 +1735,8 @@ body {
   justify-content: center;
 }
 .post-edu-icon svg {
-  width: 32px;
-  height: 32px;
+  width: 88px;             /* one-off · 1080-native */
+  height: 88px;            /* one-off · 1080-native */
   stroke: var(--ink);
   stroke-width: 1.5;
   fill: none;
@@ -1555,14 +1773,14 @@ body {
   justify-content: space-between;
 }
 .post-question-symbol {
-  font-size: 140px;      /* one-off */
+  font-size: 380px;      /* one-off · 1080-native */
   font-weight: var(--weight-black);
   line-height: 0.7;
   color: var(--brand-deep);
   letter-spacing: var(--track-tightest);
 }
 .post-question-text {
-  font-size: 26px;       /* one-off */
+  font-size: 72px;       /* one-off · 1080-native */
   font-weight: var(--weight-bold);
   line-height: 1.1;
   letter-spacing: var(--track-snug);
@@ -1587,7 +1805,7 @@ body {
   background-image:
     linear-gradient(rgba(0,0,0,0.05) 1px, transparent 1px),
     linear-gradient(90deg, rgba(0,0,0,0.05) 1px, transparent 1px);
-  background-size: 40px 40px;
+  background-size: 108px 108px;        /* one-off · 1080-native */
 }
 .post-grid-headline::before {
   content: "";
@@ -1609,7 +1827,7 @@ body {
   color: var(--graphite);
 }
 .post-grid-headline-text {
-  font-size: 48px;       /* one-off */
+  font-size: 130px;       /* one-off · 1080-native */
   font-weight: var(--weight-black);
   line-height: 0.9;
   letter-spacing: var(--track-tight);
@@ -1638,7 +1856,7 @@ body {
   background-image:
     linear-gradient(rgba(var(--brand-rgb), 0.05) 1px, transparent 1px),
     linear-gradient(90deg, rgba(var(--brand-rgb), 0.05) 1px, transparent 1px);
-  background-size: 40px 40px;
+  background-size: 108px 108px;        /* one-off · 1080-native */
 }
 .post-grid-dark-tag {
   font-family: var(--font-mono);
@@ -1648,27 +1866,27 @@ body {
   color: var(--brand);
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 16px;                          /* one-off · 1080-native */
 }
 .post-grid-dark-tag::before {
   content: "";
-  width: 6px;
-  height: 6px;
+  width: 16px;                        /* one-off · 1080-native */
+  height: 16px;                       /* one-off · 1080-native */
   background: var(--brand);
   border-radius: var(--radius-full);
 }
 .post-grid-dark-stat {
-  font-size: 96px;       /* one-off */
+  font-size: 260px;       /* one-off · 1080-native */
   font-weight: var(--weight-black);
   letter-spacing: -0.05em;  /* one-off */
   line-height: 0.85;
 }
 .post-grid-dark-stat .brand-accent { color: var(--brand); }
 .post-grid-dark-context {
-  font-size: 15px;       /* one-off */
+  font-size: 40px;       /* one-off · 1080-native */
   line-height: 1.4;
   color: rgba(255,255,255,0.6);
-  max-width: 280px;
+  max-width: 760px;      /* one-off · 1080-native */
 }
 .post-grid-dark-foot {
   display: flex;
@@ -1707,7 +1925,7 @@ body {
 }
 .post-list-item {
   display: grid;
-  grid-template-columns: 28px 1fr;
+  grid-template-columns: 76px 1fr;     /* one-off · 1080-native */
   gap: var(--space-3);
   align-items: baseline;
   font-size: var(--text-md);
@@ -1716,12 +1934,12 @@ body {
 }
 .post-list-num {
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 32px;                     /* one-off · 1080-native */
   font-weight: var(--weight-bold);
   background: var(--brand);
   color: var(--ink);
-  width: 24px;
-  height: 24px;
+  width: 64px;                         /* one-off · 1080-native */
+  height: 64px;                        /* one-off · 1080-native */
   border-radius: var(--radius-sm);
   display: flex;
   align-items: center;
@@ -1748,18 +1966,18 @@ body {
   background-image:
     linear-gradient(rgba(0,0,0,0.05) 1px, transparent 1px),
     linear-gradient(90deg, rgba(0,0,0,0.05) 1px, transparent 1px);
-  background-size: 32px 32px;
+  background-size: 88px 88px;          /* one-off · 1080-native */
   position: relative;
 }
 .post-quote-mark {
-  font-size: 100px;      /* one-off */
+  font-size: 280px;      /* one-off · 1080-native */
   font-weight: var(--weight-black);
   line-height: 0.5;
   font-family: Georgia, serif;
   font-style: italic;
 }
 .post-quote-text {
-  font-size: 26px;       /* one-off */
+  font-size: 72px;       /* one-off · 1080-native */
   font-weight: var(--weight-bold);
   line-height: 1.15;
   letter-spacing: var(--track-snug);
@@ -1791,7 +2009,7 @@ body {
   color: var(--graphite);
 }
 .post-checklist-title {
-  font-size: 32px;       /* one-off */
+  font-size: 88px;       /* one-off · 1080-native */
   font-weight: var(--weight-black);
   line-height: 1;
   letter-spacing: var(--track-snug);
@@ -1800,25 +2018,25 @@ body {
 .post-checklist-items {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 40px;             /* one-off · 1080-native */
 }
 .post-checklist-item {
   display: flex;
   align-items: center;
   gap: var(--space-3);
-  font-size: 15px;       /* one-off */
+  font-size: 40px;       /* one-off · 1080-native */
   font-weight: var(--weight-medium);
 }
 .checkbox {
-  width: 22px;
-  height: 22px;
-  border: 1.5px solid var(--ink);
+  width: 60px;           /* one-off · 1080-native */
+  height: 60px;          /* one-off · 1080-native */
+  border: 4px solid var(--ink);  /* one-off · 1080-native */
   border-radius: var(--radius-sm);
   flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 12px;
+  font-size: 32px;       /* one-off · 1080-native */
   font-weight: var(--weight-black);
 }
 .checkbox.checked {
@@ -1847,7 +2065,7 @@ body {
   background-image:
     linear-gradient(rgba(var(--brand-rgb), 0.05) 1px, transparent 1px),
     linear-gradient(90deg, rgba(var(--brand-rgb), 0.05) 1px, transparent 1px);
-  background-size: 40px 40px;
+  background-size: 108px 108px;        /* one-off · 1080-native */
 }
 .post-announcement::after {
   content: "";
@@ -1868,10 +2086,20 @@ body {
   letter-spacing: var(--track-widest);
   background: var(--brand);
   color: var(--ink);
-  padding: 6px 12px;
+  padding: 16px 32px;                  /* one-off · 1080-native */
   border-radius: var(--radius-pill);
   width: fit-content;
   font-weight: var(--weight-bold);
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;                           /* one-off · 1080-native */
+}
+.post-announcement-tag::before {
+  content: "";
+  width: 16px;                         /* one-off · 1080-native */
+  height: 16px;                        /* one-off · 1080-native */
+  background: var(--ink);
+  border-radius: var(--radius-full);
 }
 .post-announcement-title {
   font-size: var(--text-xl);
@@ -2840,7 +3068,6 @@ body {
       <div class="post-frame">
         <div class="post-label">
           <span>01 · Carrusel portada</span>
-          <span>1080×1080</span>
         </div>
         <div class="ig-post post-carousel" data-demo="carousel">
           <div class="post-carousel-top">
@@ -2848,7 +3075,7 @@ body {
             <span class="post-carousel-swipe">desliza →</span>
           </div>
           <div class="post-carousel-headline" data-slot="headline">
-            Cómo invertir <span>$100</span> al mes.
+            Cómo invertir <span class="hl">$100</span> al mes.
           </div>
           <div class="post-carousel-foot">
             <span class="post-carousel-handle" data-brand="handle"></span>
@@ -2868,7 +3095,6 @@ body {
     <div class="post-frame">
       <div class="post-label">
         <span>02 · Tip rápido</span>
-        <span>1080×1080</span>
       </div>
       <div class="ig-post post-tip">
         <div class="post-tip-tag">
@@ -2890,7 +3116,6 @@ body {
     <div class="post-frame">
       <div class="post-label">
         <span>03 · Comparativa</span>
-        <span>1080×1080</span>
       </div>
       <div class="ig-post post-compare">
         <div class="post-compare-header">Ahorrar $5,000/mes durante 30 años</div>
@@ -2919,7 +3144,6 @@ body {
     <div class="post-frame">
       <div class="post-label">
         <span>04 · Dato impactante</span>
-        <span>1080×1080</span>
       </div>
       <div class="ig-post post-data">
         <div class="brand-pixelmark post-corner-mark"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
@@ -2939,7 +3163,6 @@ body {
     <div class="post-frame">
       <div class="post-label">
         <span>05 · Concepto + icono</span>
-        <span>1080×1080</span>
       </div>
       <div class="ig-post post-edu">
         <div class="post-edu-icon">
@@ -2962,7 +3185,6 @@ body {
     <div class="post-frame">
       <div class="post-label">
         <span>06 · Pregunta engagement</span>
-        <span>1080×1080</span>
       </div>
       <div class="ig-post post-question">
         <div class="post-question-symbol">?</div>
@@ -2978,7 +3200,6 @@ body {
     <div class="post-frame">
       <div class="post-label">
         <span>07 · Headline + grid</span>
-        <span>1080×1080</span>
       </div>
       <div class="ig-post post-grid-headline">
         <div class="post-grid-tag">// EDUCACIÓN FINANCIERA</div>
@@ -2996,7 +3217,6 @@ body {
     <div class="post-frame">
       <div class="post-label">
         <span>08 · Dato + grid oscuro</span>
-        <span>1080×1080</span>
       </div>
       <div class="ig-post post-grid-dark">
         <div class="brand-pixelmark post-corner-mark"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
@@ -3016,7 +3236,6 @@ body {
     <div class="post-frame">
       <div class="post-label">
         <span>09 · Lista de pasos</span>
-        <span>1080×1080</span>
       </div>
       <div class="ig-post post-list">
         <div>
@@ -3056,7 +3275,6 @@ body {
     <div class="post-frame">
       <div class="post-label">
         <span>10 · Frase + grid lima</span>
-        <span>1080×1080</span>
       </div>
       <div class="ig-post post-quote">
         <div class="brand-pixelmark post-corner-mark"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
@@ -3075,7 +3293,6 @@ body {
     <div class="post-frame">
       <div class="post-label">
         <span>11 · Checklist</span>
-        <span>1080×1080</span>
       </div>
       <div class="ig-post post-checklist">
         <div>
@@ -3115,11 +3332,10 @@ body {
     <div class="post-frame">
       <div class="post-label">
         <span>12 · Anuncio / lanzamiento</span>
-        <span>1080×1080</span>
       </div>
       <div class="ig-post post-announcement">
         <div class="brand-pixelmark post-corner-mark"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-        <div class="post-announcement-tag">★ NUEVO</div>
+        <div class="post-announcement-tag">NUEVO</div>
         <div class="post-announcement-title">
           Curso gratis:<br>
           <span class="brand-accent">finanzas</span><br>
@@ -3136,7 +3352,6 @@ body {
     <div class="post-frame">
       <div class="post-label">
         <span>13 · Outro / cierre</span>
-        <span>1080×1080</span>
       </div>
       <div class="ig-post post-outro">
         <div class="post-outro-meta">
@@ -3310,37 +3525,72 @@ body {
 
   <h3 class="arch-section-title">Pipeline · de marca a Instagram</h3>
 
-  <div class="arch-pipeline">
-    <div class="arch-stage">
-      <div class="arch-stage-num">01</div>
-      <div class="arch-stage-name">manual-marca.html</div>
-      <div class="arch-stage-desc">Fuente de verdad</div>
+  <p class="arch-section-lead">
+    El sistema se divide en dos bloques con un <strong>handoff explícito</strong> en el medio: lo que entrega este repo (tag <code>v1.0.0</code>) y lo que arma el equipo de back con esos artefactos.
+  </p>
+
+  <div class="arch-pipeline-wrap">
+
+    <!-- Bloque 1 · NUESTRO ALCANCE -->
+    <div class="arch-pipeline-block">
+      <div class="arch-pipeline-label">
+        <span><strong>Bloque 1</strong> · Lo que entregamos en este repo</span>
+        <span class="arch-pipeline-tag is-ours">acá</span>
+      </div>
+      <div class="arch-pipeline is-ours">
+        <div class="arch-stage">
+          <div class="arch-stage-num">01</div>
+          <div class="arch-stage-name">manual-marca.html</div>
+          <div class="arch-stage-desc">Fuente única de verdad: tokens, packs y los 13 presets con sus variantes.</div>
+        </div>
+        <div class="arch-stage">
+          <div class="arch-stage-num">02</div>
+          <div class="arch-stage-name">Extractor (<code>src/</code>)</div>
+          <div class="arch-stage-desc">Parsea las 4 capas del manual con PostCSS + Cheerio. <code>npm run extract</code>.</div>
+        </div>
+        <div class="arch-stage">
+          <div class="arch-stage-num">03</div>
+          <div class="arch-stage-name">Entregables</div>
+          <div class="arch-stage-desc"><code>tokens.json</code>, <code>presets.json</code>, <code>templates/post-*.html</code> (13), <code>assets/brand/</code>.</div>
+        </div>
+      </div>
     </div>
-<div class="arch-stage">
-      <div class="arch-stage-num">02</div>
-      <div class="arch-stage-name">tokenExtractor.js</div>
-      <div class="arch-stage-desc">Parsea las 4 capas</div>
+
+    <!-- Handoff -->
+    <div class="arch-handoff">
+      <span>→ <strong>handoff</strong> via <code>git tag v1.0.0</code> →</span>
     </div>
-<div class="arch-stage">
-      <div class="arch-stage-num">03</div>
-      <div class="arch-stage-name">tokens + presets.json</div>
-      <div class="arch-stage-desc">Vocabulario + recetas</div>
+
+    <!-- Bloque 2 · BACK TEAM -->
+    <div class="arch-pipeline-block">
+      <div class="arch-pipeline-label">
+        <span><strong>Bloque 2</strong> · Lo que hace el equipo de back con los artefactos</span>
+        <span class="arch-pipeline-tag is-back">su infra</span>
+      </div>
+      <div class="arch-pipeline is-back">
+        <div class="arch-stage">
+          <div class="arch-stage-num">04</div>
+          <div class="arch-stage-name">Pipeline de contenido</div>
+          <div class="arch-stage-desc">Decide qué postear y arma el JSON. Valida slots/variants contra <code>presets.json</code>.</div>
+        </div>
+        <div class="arch-stage">
+          <div class="arch-stage-num">05</div>
+          <div class="arch-stage-name">Renderer (Puppeteer)</div>
+          <div class="arch-stage-desc">Llena los <code>data-slot</code> del template + aplica variantes → screenshot 1080×1080 (<code>deviceScaleFactor: 2</code>).</div>
+        </div>
+        <div class="arch-stage">
+          <div class="arch-stage-num">06</div>
+          <div class="arch-stage-name">CDN (Cloudinary)</div>
+          <div class="arch-stage-desc">Sube el PNG a una URL pública HTTPS que Graph API pueda consumir.</div>
+        </div>
+        <div class="arch-stage arch-stage-brand">
+          <div class="arch-stage-num">07</div>
+          <div class="arch-stage-name">Graph API</div>
+          <div class="arch-stage-desc">Crea container con <code>image_url</code> + caption, publica en <code>@financia.chile</code>.</div>
+        </div>
+      </div>
     </div>
-<div class="arch-stage">
-      <div class="arch-stage-num">04</div>
-      <div class="arch-stage-name">Renderer (Puppeteer)</div>
-      <div class="arch-stage-desc">HTML → PNG 1080×1080</div>
-    </div>
-<div class="arch-stage">
-      <div class="arch-stage-num">05</div>
-      <div class="arch-stage-name">Cloudinary</div>
-      <div class="arch-stage-desc">CDN público HTTPS</div>
-    </div>
-<div class="arch-stage arch-stage-brand">
-      <div class="arch-stage-num">06</div>
-      <div class="arch-stage-name">Graph API</div>
-      <div class="arch-stage-desc">Publica en IG</div>
-    </div>
+
   </div>
 </section>
 
@@ -3381,11 +3631,11 @@ body {
     const root = document.querySelector('[data-demo="carousel"]');
     if (!root) return;
     const slides = [
-      { num: '// 001', headline: 'Cómo invertir <span>$100</span> al mes.' },
-      { num: '// 002', headline: 'Empieza con un <span>fondo de emergencia</span>.' },
-      { num: '// 003', headline: 'Diversifica entre <span>3 instrumentos</span>.' },
-      { num: '// 004', headline: 'Reinvierte los <span>intereses</span> siempre.' },
-      { num: '// 005', headline: 'En 10 años: <span>$24,000+</span>.' },
+      { num: '// 001', headline: 'Cómo invertir <span class="hl">$100</span> al mes.' },
+      { num: '// 002', headline: 'Empieza con un <span class="hl">fondo de emergencia</span>.' },
+      { num: '// 003', headline: 'Diversifica entre <span class="hl">3 instrumentos</span>.' },
+      { num: '// 004', headline: 'Reinvierte los <span class="hl">intereses</span> siempre.' },
+      { num: '// 005', headline: 'En 10 años: <span class="hl">$24,000+</span>.' },
     ];
     const numEl   = root.querySelector('[data-slot="num"]');
     const headEl  = root.querySelector('[data-slot="headline"]');

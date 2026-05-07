@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>FinancIA · post-quote</title>
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&f[]=jetbrains-mono@400,500&display=swap" rel="stylesheet">
+<style>
+/* ───────── design tokens (auto-extraídos de manual-marca.html) ───────── */
+:root {
+  /* ════════════════════════════════════
+     CAPA 1 · PRIMITIVOS (compartidos)
+     Valores crudos. Paleta de "lo permitido".
+     ════════════════════════════════════ */
+
+  /* — Tipografía: familias — */
+  --font-display: 'Satoshi', sans-serif;
+  --font-mono:    'JetBrains Mono', monospace;
+
+  /* — Tipografía: tamaños — */
+  --text-xxs:     24px;
+  --text-xs:      28px;
+  --text-sm:      30px;
+  --text-md:      38px;
+  --text-base:    48px;
+  --text-lg:      76px;
+  --text-xl:     120px;
+  --text-display: 200px;
+
+  /* — Tipografía: pesos — */
+  --weight-light:   300;
+  --weight-regular: 400;
+  --weight-medium:  500;
+  --weight-bold:    700;
+  --weight-black:   900;
+
+  /* — Tipografía: tracking — */
+  --track-tightest: -0.06em;
+  --track-tight:    -0.04em;
+  --track-tighter:  -0.03em;
+  --track-snug:     -0.02em;
+  --track-normal:    0;
+  --track-wide:      0.04em;
+  --track-wider:     0.08em;
+  --track-widest:    0.1em;
+
+  /* — Color: semánticos (cross-theme) — */
+  --positive: #3DAA47;
+  --negative: #E84C3D;
+  --warning:  #F5B400;
+
+  /* — Color: constantes (cross-theme) — */
+  --white: #FFFFFF;
+
+  /* — Radii — */
+  --radius-sm:    6px;
+  --radius-md:    8px;
+  --radius-lg:   16px;
+  --radius-pill: 999px;
+  --radius-full:  50%;
+
+  /* — Espaciado (escala base 4px) — */
+  --space-0:     0;
+  --space-1:    12px;
+  --space-2:    24px;
+  --space-3:    32px;
+  --space-4:    44px;
+  --space-5:    56px;
+  --space-6:    64px;
+  --space-7:    76px;
+  --space-8:    88px;
+  --space-9:    96px;
+  --space-10:  108px;
+  --space-12:  132px;
+  --space-15:  164px;
+  --space-20:  220px;
+  --space-25:  272px;
+
+  /* — Sombras — */
+  --shadow-sm:   0 8px 32px rgba(0,0,0,0.18), 0 0 0 1px rgba(0,0,0,0.04);
+  --shadow-md:   0 12px 40px rgba(0,0,0,0.25);
+  --shadow-lg:   0 24px 64px rgba(0,0,0,0.32), 0 0 0 1px rgba(255,255,255,0.05);
+  --shadow-glow: 0 0 8px var(--brand);
+
+  /* — Movimiento — */
+  --ease-out:  cubic-bezier(.2,.8,.2,1);
+  --dur-fast:  0.2s;
+  --dur-base:  0.3s;
+  --dur-slow:  0.4s;
+
+  /* — Pixelmark (FinancIA · grid 3×3, 3 niveles de opacidad) — */
+  --pixelmark-opacity-low:  0.22;
+  --pixelmark-opacity-mid:  0.55;
+  --pixelmark-opacity-full: 1;
+
+  /* Escala de tamaños del pixelmark · usar el token, no px crudos */
+  --pixelmark-xs:   56px;   /* esquinas de posts, badges chicos */
+  --pixelmark-sm:   76px;   /* nav, headers compactos */
+  --pixelmark-md:  128px;   /* default del pack, uso general */
+  --pixelmark-lg:  256px;   /* hero, splash */
+  --pixelmark-xl:  380px;   /* sección logo, presentaciones */
+
+  /* ════════════════════════════════════
+     CAPA 2 · SEMÁNTICOS
+     Aliases con intención. Conectan
+     primitivos con su rol en la marca.
+     ════════════════════════════════════ */
+
+  /* — Tipografía con rol — */
+  --type-display:   var(--text-display);
+  --type-headline:  var(--text-lg);
+  --type-headline-lg: var(--text-xl);
+  --type-stat:      var(--text-lg);
+  --type-body:      var(--text-base);
+  --type-body-sm:   var(--text-md);
+  --type-label:     var(--text-xs);
+  --type-label-sm:  var(--text-xxs);
+
+  /* — Pesos con rol — */
+  --weight-body:     var(--weight-light);
+  --weight-emphasis: var(--weight-bold);
+  --weight-display:  var(--weight-black);
+
+  /* — Tracking con rol — */
+  --track-display:   var(--track-tight);
+  --track-headline:  var(--track-snug);
+  --track-label:     var(--track-wider);
+
+  /* — Superficies (resuelven dinámicamente al tema activo) — */
+  --surface-base:   var(--cream);
+  --surface-soft:   var(--bone);
+  --surface-dark:   var(--ink);
+  --surface-brand:  var(--brand);
+
+  /* — Texto según contexto — */
+  --text-default:   var(--ink);
+  --text-muted:     var(--graphite);
+  --text-subtle:    var(--stone);
+  --text-on-dark:   var(--white);
+  --text-on-brand:  var(--on-brand);
+
+  /* — Espaciado con rol — */
+  --space-card-pad-y:  var(--space-9);   /* 96px - padding vertical de cards */
+  --space-card-pad-x:  var(--space-8);   /* 88px - padding horizontal */
+  --space-section:     var(--space-20);  /* 80px - separación entre secciones */
+  --space-stack-sm:    var(--space-2);   /*  8px - gap pequeño */
+  --space-stack-md:    var(--space-4);   /* 16px - gap medio */
+  --space-stack-lg:    var(--space-6);   /* 24px - gap grande */
+}
+
+/* ===== Paleta · verde esmeralda + neutros tintados ===== */
+:root {
+  /* Marca */
+  --brand:        #00E664;
+  --brand-bright: #2EEB80;
+  --brand-deep:   #00B850;
+  --brand-soft:   #A7F3D0;
+  --brand-pale:   #D1FAE5;
+  --brand-rgb:    0, 230, 100;
+  --on-brand:     #FFFFFF;
+
+  /* Neutros (tintados cálidos para contrastar con el verde) */
+  --ink:      #0C1410;
+  --charcoal: #1A2620;
+  --graphite: #3D4A43;
+  --stone:    #7A8580;
+  --mist:     #C8D2CC;
+  --bone:     #ECF0EB;
+  --cream:    #F5F7F2;
+}
+
+/* ───────── reset mínimo + viewport ───────── */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  width: 1080px;
+  height: 1080px;
+  background: var(--cream);
+  font-family: var(--font-display);
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ig-post { width: 1080px; height: 1080px; border-radius: 0; }
+
+/* ───────── reglas del preset post-quote ───────── */
+.brand-pixelmark {
+  --pixelmark-size:  var(--pixelmark-md);
+  --pixelmark-color: var(--brand);
+  width:  var(--pixelmark-size);
+  height: var(--pixelmark-size);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows:    repeat(3, 1fr);
+  gap: calc(var(--pixelmark-size) * 0.11);
+  flex-shrink: 0;
+}
+
+.brand-pixelmark > i {
+  background: var(--pixelmark-color);
+  border-radius: calc(var(--pixelmark-size) * 0.047);
+  display: block;
+}
+
+.brand-pixelmark > i:nth-child(1) { opacity: var(--pixelmark-opacity-low); }
+
+.brand-pixelmark > i:nth-child(2) { opacity: var(--pixelmark-opacity-mid); }
+
+.brand-pixelmark > i:nth-child(3) { opacity: var(--pixelmark-opacity-full); }
+
+.brand-pixelmark > i:nth-child(4) { opacity: var(--pixelmark-opacity-low); }
+
+.brand-pixelmark > i:nth-child(5) { opacity: var(--pixelmark-opacity-full); }
+
+.brand-pixelmark > i:nth-child(6) { opacity: var(--pixelmark-opacity-mid); }
+
+.brand-pixelmark > i:nth-child(7) { opacity: var(--pixelmark-opacity-full); }
+
+.brand-pixelmark > i:nth-child(8) { opacity: var(--pixelmark-opacity-low); }
+
+.brand-pixelmark > i:nth-child(9) { opacity: var(--pixelmark-opacity-full); }
+
+.ig-post > .post-corner-mark {
+  position: absolute;
+  top:   var(--space-card-pad-y);
+  right: var(--space-card-pad-x);
+  bottom: auto;
+  left: auto;
+  --pixelmark-size: var(--pixelmark-xs);
+  --pixelmark-color: var(--brand);
+  z-index: 3;
+}
+
+.ig-post > .post-corner-mark.top-left     { left:  var(--space-card-pad-x); right: auto; }
+
+.ig-post > .post-corner-mark.bottom-right { top: auto; bottom: var(--space-card-pad-y); }
+
+.ig-post > .post-corner-mark.bottom-left  { top: auto; bottom: var(--space-card-pad-y); left: var(--space-card-pad-x); right: auto; }
+
+.post-quote .post-corner-mark { --pixelmark-color: var(--ink); }
+
+.post-quote { color: var(--white); }
+
+.post-quote .post-quote-author { border-color: rgba(255,255,255,0.25); }
+
+.ig-post {
+  aspect-ratio: 1 / 1;
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.post-quote {
+  background: var(--surface-brand);
+  color: var(--ink);
+  padding: var(--space-card-pad-y) var(--space-card-pad-x);
+  justify-content: space-between;
+  background-image:
+    linear-gradient(rgba(0,0,0,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.05) 1px, transparent 1px);
+  background-size: 88px 88px;          /* one-off · 1080-native */
+  position: relative;
+}
+
+.post-quote-mark {
+  font-size: 280px;      /* one-off · 1080-native */
+  font-weight: var(--weight-black);
+  line-height: 0.5;
+  font-family: Georgia, serif;
+  font-style: italic;
+}
+
+.post-quote-text {
+  font-size: 72px;       /* one-off · 1080-native */
+  font-weight: var(--weight-bold);
+  line-height: 1.15;
+  letter-spacing: var(--track-snug);
+}
+
+.post-quote-author {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  text-transform: uppercase;
+  letter-spacing: var(--track-wider);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: var(--space-4);
+  border-top: 1px solid rgba(0,0,0,0.2);
+}
+</style>
+</head>
+<body>
+<div class="ig-post post-quote post-quote--theme-brand post-quote--layout-mark-top">
+  <div class="brand-pixelmark post-corner-mark"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="post-quote-mark" data-slot="mark">"</div>
+  <div class="post-quote-text" data-slot="text">
+    No ahorres lo que te queda después de gastar. Gasta lo que te queda después de ahorrar.
+  </div>
+  <div class="post-quote-author">
+    <span data-slot="author">— WARREN BUFFETT</span>
+    <span>@financia.chile</span>
+  </div>
+</div>
+</body>
+</html>
